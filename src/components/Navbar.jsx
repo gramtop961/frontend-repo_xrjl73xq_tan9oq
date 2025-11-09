@@ -1,67 +1,79 @@
-import { useState } from 'react'
-import { Rocket, Menu, X } from 'lucide-react'
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  const navItems = [
-    { label: 'Features', href: '#features' },
-    { label: 'Showcase', href: '#showcase' },
-    { label: 'Docs', href: '#docs' },
-  ]
+  const links = [
+    { href: '#product', label: 'Product' },
+    { href: '#solutions', label: 'Solutions' },
+    { href: '#docs', label: 'Docs' },
+    { href: '#pricing', label: 'Pricing' },
+  ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 inset-x-0 z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mt-6 backdrop-blur supports-[backdrop-filter]:bg-white/5 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 sm:py-4 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 text-white">
-            <div className="bg-gradient-to-br from-violet-500 to-sky-400 p-2 rounded-lg">
-              <Rocket className="h-5 w-5" />
-            </div>
-            <span className="font-semibold tracking-tight">unBound.ai</span>
-          </a>
-
-          <nav className="hidden md:flex items-center gap-8 text-sm text-white/80">
-            {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="hover:text-white transition-colors">
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="#get-started"
-              className="inline-flex items-center rounded-xl bg-gradient-to-r from-violet-500 to-sky-400 px-4 py-2 font-medium text-white shadow-lg shadow-violet-500/20 hover:opacity-90"
-            >
-              Get Started
+        <div className="mt-4 rounded-xl border border-white/10 bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-black/30">
+          <nav className="flex items-center justify-between px-4 py-3 sm:px-6">
+            <a href="#" className="flex items-center gap-2">
+              <div className="h-6 w-6 rounded bg-gradient-to-tr from-fuchsia-500 via-indigo-500 to-cyan-400" />
+              <span className="font-semibold tracking-tight text-white">unBound.ai</span>
             </a>
-          </nav>
 
-          <button
-            className="md:hidden text-white/90"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {open && (
-          <div className="md:hidden mt-3 backdrop-blur supports-[backdrop-filter]:bg-white/5 bg-white/5 border border-white/10 rounded-2xl p-4 text-white">
-            <div className="flex flex-col gap-3">
-              {navItems.map((item) => (
-                <a key={item.label} href={item.href} className="py-2 px-2 rounded-lg hover:bg-white/5">
-                  {item.label}
+            <div className="hidden md:flex items-center gap-8">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="text-sm text-white/80 hover:text-white transition-colors"
+                >
+                  {l.label}
                 </a>
               ))}
               <a
                 href="#get-started"
-                className="mt-2 inline-flex justify-center items-center rounded-xl bg-gradient-to-r from-violet-500 to-sky-400 px-4 py-2 font-medium text-white"
+                className="inline-flex items-center rounded-md bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400 px-3 py-2 text-sm font-medium text-white shadow hover:opacity-95 transition"
               >
-                Get Started
+                Launch App
               </a>
             </div>
-          </div>
-        )}
+
+            <button
+              type="button"
+              aria-label="Toggle menu"
+              className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-white/5 text-white"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </nav>
+
+          {open && (
+            <div className="md:hidden border-t border-white/10 px-4 py-3 sm:px-6">
+              <div className="grid gap-3">
+                {links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    className="rounded-md px-2 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 transition"
+                    onClick={() => setOpen(false)}
+                  >
+                    {l.label}
+                  </a>
+                ))}
+                <a
+                  href="#get-started"
+                  className="mt-1 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400 px-3 py-2 text-sm font-medium text-white shadow hover:opacity-95 transition"
+                  onClick={() => setOpen(false)}
+                >
+                  Launch App
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </header>
-  )
+  );
 }

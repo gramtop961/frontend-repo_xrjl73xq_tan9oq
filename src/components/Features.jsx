@@ -1,53 +1,60 @@
-import { Sparkles, Cursor, Layers, Shield } from 'lucide-react'
+import { Rocket, Workflow, Shield, Zap } from 'lucide-react';
 
-const features = [
+const items = [
   {
-    icon: Sparkles,
-    title: 'Generative UX Blocks',
-    desc: 'Compose complex interfaces from intelligent primitives that adapt to context.',
+    icon: Rocket,
+    title: 'Production-ready agents',
+    desc: 'From planning to execution, deploy robust multi-step agents with built-in retries, guardrails, and tracing.',
   },
   {
-    icon: Cursor,
-    title: 'Live 3D Interactions',
-    desc: 'Mouse-reactive scenes, silky motion, and zero-latency feel built-in.',
-  },
-  {
-    icon: Layers,
-    title: 'Composable Pipelines',
-    desc: 'Chain models, tools, and data into reusable flows with guardrails.',
+    icon: Workflow,
+    title: 'Composable tools',
+    desc: 'Integrate APIs, functions, webhooks, and data sources with type-safe interfaces and versioned schemas.',
   },
   {
     icon: Shield,
-    title: 'Trust & Safety',
-    desc: 'Runtime policies, red-teaming, and observability baked into every action.',
+    title: 'Security & control',
+    desc: 'Permissions, sandboxing, and policy controls ensure safe operations across environments.',
   },
-]
+  {
+    icon: Zap,
+    title: 'Blazing performance',
+    desc: 'Streaming responses, caching, and parallelization keep experiences snappy at scale.',
+  },
+];
 
 export default function Features() {
   return (
-    <section id="features" className="relative bg-[#0A0B10] text-white py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">Everything you need to ship faster</h2>
-          <p className="mt-3 text-white/70 max-w-2xl mx-auto">
-            From dynamic 3D canvases to robust safety, unBound-style building blocks optimize for velocity and control.
+    <section id="product" className="relative py-24">
+      <div className="pointer-events-none absolute inset-x-0 -top-32 h-64 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,0.25),rgba(0,0,0,0))]" />
+      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="bg-gradient-to-br from-white via-white to-white/80 bg-clip-text text-3xl font-semibold tracking-tight text-transparent sm:text-4xl">
+            Everything you need to ship agentic apps
+          </h2>
+          <p className="mt-4 text-white/70">
+            Powerful primitives with batteries-included DX. Bring your own model, tools, and data.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f) => (
-            <div key={f.title} className="group rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/[0.07] transition-colors">
-              <div className="flex items-center gap-3">
-                <div className="rounded-xl bg-gradient-to-br from-violet-600/30 to-sky-500/30 p-2.5">
-                  <f.icon className="h-5 w-5 text-white" />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 shadow transition hover:bg-white/[0.07]"
+            >
+              <div className="absolute inset-px rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+              <div className="relative">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-indigo-500/30 via-fuchsia-500/30 to-cyan-400/30 text-indigo-300">
+                  <Icon size={18} />
                 </div>
-                <h3 className="font-semibold">{f.title}</h3>
+                <h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
+                <p className="mt-2 text-sm text-white/70">{desc}</p>
               </div>
-              <p className="mt-3 text-sm text-white/70">{f.desc}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
