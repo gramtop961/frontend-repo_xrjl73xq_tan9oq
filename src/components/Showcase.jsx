@@ -34,9 +34,10 @@ export default function Showcase() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.03] p-6"
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.03] p-6 backdrop-blur-xl"
             >
-              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gradient-to-br from-indigo-500/20 via-fuchsia-500/20 to-cyan-400/20 blur-3xl" />
+              <div className="pointer-events-none absolute inset-px rounded-[1rem] bg-gradient-to-br from-white/10 to-transparent opacity-60" />
+              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[conic-gradient(from_120deg_at_50%_50%,rgba(0,240,255,0.18),rgba(106,93,255,0.18),rgba(177,94,255,0.18),transparent_60%)] blur-3xl" />
               <h3 className="relative text-lg font-semibold text-white">{c.title}</h3>
               <p className="relative mt-2 text-sm text-white/70">{c.desc}</p>
             </motion.div>

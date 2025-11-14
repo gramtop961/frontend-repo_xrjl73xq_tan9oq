@@ -14,10 +14,11 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mt-4 rounded-xl border border-white/10 bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-black/30">
+        {/* Glass, subtle border glow */}
+        <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl supports-[backdrop-filter]:bg-white/[0.04] shadow-[0_0_40px_-10px_rgba(0,240,255,0.18)]">
           <nav className="flex items-center justify-between px-4 py-3 sm:px-6">
-            <a href="#" className="flex items-center gap-2">
-              <div className="h-6 w-6 rounded bg-gradient-to-tr from-fuchsia-500 via-indigo-500 to-cyan-400" />
+            <a href="#home" className="flex items-center gap-2">
+              <div className="h-6 w-6 rounded bg-[conic-gradient(from_120deg_at_50%_50%,#00F0FF,#6A5DFF,#B15EFF,#00F0FF)]" />
               <span className="font-semibold tracking-tight text-white">unBound.ai</span>
             </a>
 
@@ -33,7 +34,7 @@ export default function Navbar() {
               ))}
               <a
                 href="#get-started"
-                className="inline-flex items-center rounded-md bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400 px-3 py-2 text-sm font-medium text-white shadow hover:opacity-95 transition"
+                className="inline-flex items-center rounded-md bg-gradient-to-r from-cyan-400 via-indigo-500 to-fuchsia-500 px-3 py-2 text-sm font-medium text-white shadow transition hover:opacity-95"
               >
                 Launch App
               </a>
@@ -64,7 +65,7 @@ export default function Navbar() {
                 ))}
                 <a
                   href="#get-started"
-                  className="mt-1 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400 px-3 py-2 text-sm font-medium text-white shadow hover:opacity-95 transition"
+                  className="mt-1 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-cyan-400 via-indigo-500 to-fuchsia-500 px-3 py-2 text-sm font-medium text-white shadow transition hover:opacity-95"
                   onClick={() => setOpen(false)}
                 >
                   Launch App
